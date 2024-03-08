@@ -29,11 +29,17 @@ bacon: $(INTERNAL_OTA_PACKAGE_TARGET)
 	$(hide) $(SHA256) $(PIXELSTAR_TARGET_PACKAGE) | sed "s|$(PRODUCT_OUT)/||" > $(PIXELSTAR_TARGET_PACKAGE).sha256sum
 	@echo -e ${CL_CYN}""${CL_CYN}
 	@echo -e ${CL_PRP}""${CL_CYN}
-	@echo -e ${CL_CYN}"  ____ _____  _______ _     ____ _____  _    ____   "${CL_CYN}
-	@echo -e ${CL_CYN}" |  _ \_ _\ \/ / ____| |   / ___|_   _|/ \  |  _ \  "${CL_CYN}
-	@echo -e ${CL_CYN}" | |_) | | \  /|  _| | |   \___ \ | | / _ \ | |_) | "${CL_CYN}
-	@echo -e ${CL_CYN}" |  __/| | /  \| |___| |___ ___) || |/ ___ \|  _ <  "${CL_CYN}
-	@echo -e ${CL_CYN}" |_|  |___/_/\_\_____|_____|____/ |_/_/   \_\_| \_\ "${CL_CYN}
+	@echo -e ${CL_CYN}"  _____ _______   ________ _       _____ _______       _____  "${CL_CYN}
+	@echo -e ${CL_CYN}"|  __ \_   _\ \ / /  ____| |     / ____|__   __|/\   |  __ \  "${CL_CYN}
+	@echo -e ${CL_CYN}"| |__) || |  \ V /| |__  | |    | (___    | |  /  \  | |__) | "${CL_CYN}
+	@echo -e ${CL_CYN}"|  ___/ | |   > < |  __| | |     \___ \   | | / /\ \ |  _  /  "${CL_CYN}
+	@echo -e ${CL_CYN}"| |    _| |_ / . \| |____| |____ ____) |  | |/ ____ \| | \ \  "${CL_CYN}
+	@echo -e ${CL_CYN}"|_|___|_____/_/_\_\______|______|_____/_  |_/_/_ __\_\_|  \_\ "${CL_CYN}
+	@echo -e ${CL_CYN}"|  ____\ \ / /__   __|  ____| \ | |  __ \|  ____|  __ \       "${CL_CYN}
+	@echo -e ${CL_CYN}"| |__   \ V /   | |  | |__  |  \| | |  | | |__  | |  | |      "${CL_CYN}
+	@echo -e ${CL_CYN}"|  __|   > <    | |  |  __| | . ` | |  | |  __| | |  | |      "${CL_CYN}
+	@echo -e ${CL_CYN}"| |____ / . \   | |  | |____| |\  | |__| | |____| |__| |      "${CL_CYN}
+	@echo -e ${CL_CYN}"|______/_/ \_\  |_|  |______|_| \_|_____/|______|_____/       "${CL_CYN}
 	@echo -e ${CL_CYN}""${CL_CYN}
 	echo -e ${CL_BLD}${CL_RED}"===============================-Package complete-==============================="${CL_RED}
 	$(hide) ./vendor/pixelstar/tools/generate_json_build_info.sh $(PIXELSTAR_TARGET_PACKAGE)
