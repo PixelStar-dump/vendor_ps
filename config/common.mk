@@ -279,7 +279,7 @@ PRODUCT_PACKAGES += \
     ImmersiveNavigationOverlay
     
 # Signing
-ifeq (user,$(TARGET_BUILD_VARIANT))
+ifneq (eng,$(TARGET_BUILD_VARIANT))
 ifneq (,$(wildcard vendor/pixelstar/signing/keys/releasekey.pk8))
 PRODUCT_DEFAULT_DEV_CERTIFICATE := vendor/pixelstar/signing/keys/releasekey
 PRODUCT_DEFAULT_PROPERTY_OVERRIDES += ro.oem_unlock_supported=1
