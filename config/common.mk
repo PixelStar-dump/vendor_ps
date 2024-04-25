@@ -139,9 +139,9 @@ TARGET_SCREEN_HEIGHT ?= 1920
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
-# Build Manifest
+# TouchGestures
 PRODUCT_PACKAGES += \
-    build-manifest
+    TouchGestures
 
 # BtHelper
 PRODUCT_PACKAGES += \
