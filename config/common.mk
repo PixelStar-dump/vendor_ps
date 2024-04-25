@@ -85,9 +85,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
 
-# Gapps
-$(call inherit-product-if-exists, vendor/gms/products/gms.mk)
-
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= $(TARGET_SUPPORTS_64_BIT_APPS)
 
@@ -139,9 +136,9 @@ TARGET_SCREEN_HEIGHT ?= 1920
 PRODUCT_PACKAGES += \
     bootanimation.zip
 
-# Build Manifest
+# TouchGestures
 PRODUCT_PACKAGES += \
-    build-manifest
+    TouchGestures
 
 # BtHelper
 PRODUCT_PACKAGES += \
@@ -295,8 +292,17 @@ $(call inherit-product, vendor/pixelstar/config/bootanimation.mk)
 
 include vendor/pixelstar/config/branding.mk
 
-#Certification
-$(call inherit-product-if-exists, vendor/certification/config.mk)
+# Certification
+include vendor/certification/BoardConfig.mk
+
+# rro_overlays
+$(call inherit-product, vendor/pixelstar/config/rro_overlays.mk)
+
+$(call inherit-product, vendor/gms/products/gms.mk)
+$(call inherit-product, vendor/pixelstar/config/pixel-rro_overlays.mk)
+
+# pixelstar prebuilts
+$(call inherit-product, vendor/pixelstar-prebuilts/config.mk)
 
 # Enable ThinLTO Source wide Conditionally.
 ifeq ($(TARGET_BUILD_WITH_LTO),true)
