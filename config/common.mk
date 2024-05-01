@@ -102,9 +102,6 @@ PRODUCT_COPY_FILES += \
     frameworks/native/data/etc/android.hardware.biometrics.face.xml:$(TARGET_COPY_OUT_SYSTEM)/etc/permissions/android.hardware.biometrics.face.xml
 endif
 
-# Fonts
-include vendor/pixelstar/config/fonts.mk
-
 # Gboard side padding
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.google.ime.kb_pad_port_l=4 \
@@ -303,6 +300,9 @@ $(call inherit-product, vendor/pixelstar/config/pixel-rro_overlays.mk)
 
 # pixelstar prebuilts
 $(call inherit-product, vendor/pixelstar-prebuilts/config.mk)
+
+# ThemeOverlays
+include packages/overlays/Themes/themes.mk
 
 # Enable ThinLTO Source wide Conditionally.
 ifeq ($(TARGET_BUILD_WITH_LTO),true)
