@@ -240,11 +240,6 @@ PRODUCT_PACKAGES += \
 endif
 endif
 
-PRODUCT_PRODUCT_PROPERTIES += \
-    ro.config.ringtone=Your_new_adventure.ogg \
-    ro.config.notification_sound=Eureka.ogg \
-    ro.config.alarm_alert=Fresh_start.ogg
-    
 # Disable touch video heatmap to reduce latency, motion jitter, and CPU usage
 # on supported devices with Deep Press input classifier HALs and models
 PRODUCT_PRODUCT_PROPERTIES += \
@@ -305,6 +300,9 @@ $(call inherit-product, vendor/pixelstar/config/pixel-rro_overlays.mk)
 
 # pixelstar prebuilts
 $(call inherit-product, vendor/pixelstar-prebuilts/config.mk)
+
+# Inherit Pixelstar audio files
+$(call inherit-product, vendor/pixelstar/config/pixelstar_audio.mk)
 
 # ThemeOverlays
 include packages/overlays/Themes/themes.mk
