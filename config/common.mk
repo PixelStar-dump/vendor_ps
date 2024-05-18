@@ -289,6 +289,9 @@ endif
 $(call inherit-product, vendor/pixel-framework/config.mk)
 $(call inherit-product, vendor/pixel-style/config/common.mk)
 
+PRODUCT_PRODUCT_PROPERTIES += \
+    setupwizard.theme=glif_v3_light
+    
 # LineageHW permission
 PRODUCT_COPY_FILES += \
     vendor/pixelstar/config/permissions/privapp-permissions-lineagehw.xml:$(TARGET_COPY_OUT_SYSTEM_EXT)/etc/permissions/privapp-permissions-lineagehw.xml
