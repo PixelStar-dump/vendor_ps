@@ -24,3 +24,6 @@ PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
 # Disable mobile data by default
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.com.android.mobiledata=false
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.config.ringtone=Your_new_adventure.ogg

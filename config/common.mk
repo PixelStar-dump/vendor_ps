@@ -85,9 +85,6 @@ PRODUCT_COPY_FILES += \
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     ro.control_privapp_permissions=enforce
 
-# Gapps
-$(call inherit-product-if-exists, vendor/gms/products/gms.mk)
-
 # Face Unlock
 TARGET_FACE_UNLOCK_SUPPORTED ?= $(TARGET_SUPPORTS_64_BIT_APPS)
 
@@ -248,9 +245,14 @@ endif
 PRODUCT_PRODUCT_PROPERTIES += \
     ro.input.video_enabled=false
 
-# SystemUI
+
+PRODUCT_PRODUCT_PROPERTIES += \
+    ro.config.notification_sound=Eureka.ogg \
+    ro.config.alarm_alert=Fresh_start.ogg 
+
+# Dex preopt
 PRODUCT_DEXPREOPT_SPEED_APPS += \
-    SystemUI
+    NexusLauncherRelease
 
 PRODUCT_SYSTEM_DEFAULT_PROPERTIES += \
     dalvik.vm.systemuicompilerfilter=speed
@@ -272,11 +274,20 @@ PRODUCT_PACKAGE_OVERLAYS += \
     vendor/pixelstar/overlay/no-rro
 
 PRODUCT_PACKAGES += \
-    CustomPixelLauncherOverlay \
     DocumentsUIOverlay \
     ImmersiveNavigationOverlay \
-    NetworkStackOverlay \
-    NexusLauncherResOverlay
+    NetworkStackOverlay 
+
+ifeq ($(TARGET_USES_MINI_GAPPS),true)
+$(call inherit-product, vendor/gms/gms_mini.mk)
+else ifeq ($(TARGET_USES_PICO_GAPPS),true)
+$(call inherit-product, vendor/gms/gms_pico.mk)
+else
+$(call inherit-product, vendor/gms/gms_full.mk)
+endif
+
+$(call inherit-product, vendor/pixel-framework/config.mk)
+$(call inherit-product, vendor/pixel-style/config/common.mk)
 
 # LineageHW permission
 PRODUCT_COPY_FILES += \
@@ -309,4 +320,3 @@ PRODUCT_COPY_FILES += \
     vendor/pixelstar/overlay/rro_packages/partition_order.xml:$(TARGET_COPY_OUT_PRODUCT)/overlay/partition_order.xml
     
 -include $(WORKSPACE)/build_env/image-auto-bits.mk
--include vendor/pixelstar/config/partner_gms.mk
